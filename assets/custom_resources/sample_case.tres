@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Case" load_steps=2 format=3 uid="uid://divrdcocceyc3"]
+
+[ext_resource type="Script" uid="uid://d336s5hqhhnmc" path="res://scripts/case.gd" id="1_jdfou"]
+
+[resource]
+script = ExtResource("1_jdfou")
+title = "Robbery at the Market"
+description = "John Doe, age 22, stole $500 from a convenience store. He was unarmed and used no violence, but threatened the cashier verbally. He has no prior criminal record and is employed part-time while attending community college."
+correct_verdict = "2 years probation and 200 hours community service"
+lenient_verdict = "6 months probation with no community service"
+harsh_verdict = "5 years imprisonment"
+explanation = "First-time offenders who commit non-violent theft without weapons typically receive probation with community service. The amount stolen ($500) is significant but not extreme, and rehabilitation is prioritized over incarceration for first offenses."
+metadata/_custom_type_script = "uid://d336s5hqhhnmc"

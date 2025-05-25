@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg73swyw5b21v"]
+
+[ext_resource type="Script" uid="uid://dq7l6udyxf3dn" path="res://scripts/mallot.gd" id="1_l40v5"]
+[ext_resource type="Texture2D" uid="uid://cwy465b13j42p" path="res://assets/import/mallot.png" id="1_lrdwy"]
+
+[sub_resource type="Animation" id="Animation_l40v5"]
+resource_name = "strike"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hammer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.466667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.5708, -1.0472, -1.5708, -1.48353, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_g4fa3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hammer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40buq"]
+_data = {
+&"RESET": SubResource("Animation_g4fa3"),
+&"strike": SubResource("Animation_l40v5")
+}
+
+[node name="Mallot" type="Node2D"]
+script = ExtResource("1_l40v5")
+
+[node name="hammer" type="Sprite2D" parent="."]
+position = Vector2(250.918, -13.5596)
+rotation = -1.5708
+scale = Vector2(0.399038, 0.399038)
+texture = ExtResource("1_lrdwy")
+offset = Vector2(-0.32925, -361.448)
+region_enabled = true
+region_rect = Rect2(8, 104, 416, 816)
+
+[node name="pad" type="Sprite2D" parent="."]
+position = Vector2(-3.31389, 112.303)
+rotation = 0.00186309
+scale = Vector2(0.38362, 0.38362)
+texture = ExtResource("1_lrdwy")
+region_enabled = true
+region_rect = Rect2(504, 640, 488, 232)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_40buq")
+}

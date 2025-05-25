@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://01jrcft1518t"]
+
+[ext_resource type="Script" uid="uid://cen6vxw8tkv4a" path="res://scripts/DebugScreen.cs" id="1_3rigy"]
+[ext_resource type="PackedScene" uid="uid://b3vsclu3uvado" path="res://scenes/components/scale.tscn" id="2_oesf7"]
+[ext_resource type="PackedScene" uid="uid://dg73swyw5b21v" path="res://scenes/components/mallot.tscn" id="3_1cr05"]
+
+[node name="DebugScreen" type="Node2D"]
+script = ExtResource("1_3rigy")
+
+[node name="Readings" type="RichTextLabel" parent="."]
+offset_left = 3.0
+offset_right = 470.0
+offset_bottom = 291.0
+
+[node name="History" type="RichTextLabel" parent="."]
+offset_left = 616.0
+offset_top = 7.0
+offset_right = 1083.0
+offset_bottom = 298.0
+
+[node name="Scale" parent="." instance=ExtResource("2_oesf7")]
+position = Vector2(259, 319)
+rotation = -0.000353024
+scale = Vector2(0.638926, 0.638926)
+
+[node name="Mallot" parent="." instance=ExtResource("3_1cr05")]
+position = Vector2(787, 417)
