@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1nbsij0oy4sj"]
+
+[ext_resource type="Texture2D" uid="uid://bphjo46sdqxt7" path="res://assets/import/JPGS/Paper Texture1.jpg" id="1_28gh7"]
+[ext_resource type="Script" uid="uid://bjugfybfxmf2" path="res://scenes/components/paper_document.gd" id="2_f67vt"]
+[ext_resource type="FontFile" uid="uid://7g7ohepduya2" path="res://assets/fonts/XTypewriter-Regular.ttf" id="3_eynlh"]
+[ext_resource type="Resource" uid="uid://divrdcocceyc3" path="res://assets/custom_resources/sample_case.tres" id="3_ttmks"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="PaperDocument" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_28gh7")
+expand_mode = 3
+script = ExtResource("2_f67vt")
+characters_per_page = 600
+case = ExtResource("3_ttmks")
+
+[node name="TextContainer" type="MarginContainer" parent="MarginContainer/PaperDocument"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 75
+
+[node name="TextContent" type="RichTextLabel" parent="MarginContainer/PaperDocument/TextContainer"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_eynlh")
+bbcode_enabled = true
+text = "[center][font_size=36]Case Title[/font_size][/center]
+
+
+[font_size=20]Description[/font_size]
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+
+Where does it come from?
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.
+
+"
+scroll_active = false
+
+[node name="ButtonContainer" type="MarginContainer" parent="MarginContainer/PaperDocument"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NextPageButton" type="Button" parent="MarginContainer/PaperDocument/ButtonContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="PrevPageButton" type="Button" parent="MarginContainer/PaperDocument/ButtonContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PageText" type="RichTextLabel" parent="MarginContainer/PaperDocument"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_eynlh")
+text = "Page 1/5"
+horizontal_alignment = 1

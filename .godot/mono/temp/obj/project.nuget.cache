@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "hbHQOrsecpU=",
+  "success": true,
+  "projectFilePath": "/home/everton/Development/godot/judge-sim/ui_tut.csproj",
+  "expectedPackageFiles": [
+    "/home/everton/.nuget/packages/godot.sourcegenerators/4.4.1/godot.sourcegenerators.4.4.1.nupkg.sha512",
+    "/home/everton/.nuget/packages/godotsharp/4.4.1/godotsharp.4.4.1.nupkg.sha512",
+    "/home/everton/.nuget/packages/godotsharpeditor/4.4.1/godotsharpeditor.4.4.1.nupkg.sha512",
+    "/home/everton/.nuget/packages/runtime.linux-arm.runtime.native.system.io.ports/7.0.0/runtime.linux-arm.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "/home/everton/.nuget/packages/runtime.linux-arm64.runtime.native.system.io.ports/7.0.0/runtime.linux-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "/home/everton/.nuget/packages/runtime.linux-x64.runtime.native.system.io.ports/7.0.0/runtime.linux-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "/home/everton/.nuget/packages/runtime.native.system.io.ports/7.0.0/runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "/home/everton/.nuget/packages/runtime.osx-arm64.runtime.native.system.io.ports/7.0.0/runtime.osx-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "/home/everton/.nuget/packages/runtime.osx-x64.runtime.native.system.io.ports/7.0.0/runtime.osx-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "/home/everton/.nuget/packages/system.io.ports/7.0.0/system.io.ports.7.0.0.nupkg.sha512",
+    "/home/everton/.nuget/packages/microsoft.netcore.app.ref/8.0.16/microsoft.netcore.app.ref.8.0.16.nupkg.sha512",
+    "/home/everton/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.16/microsoft.aspnetcore.app.ref.8.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}
