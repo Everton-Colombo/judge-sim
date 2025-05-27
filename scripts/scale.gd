@@ -35,17 +35,18 @@ func update_basket_rotations(arm_angle: float):
 		right_basket.rotation_degrees = -arm_angle
 
 func _process(delta: float) -> void:
-	if mouse_scale_mode and not ArduinoConn.IsConnected():
-		var mouse_x = get_viewport().get_mouse_position().x
-		var viewport_center_x = get_viewport().size.x / 2
-		angle = (mouse_x - viewport_center_x) / 4.0
-		# Update RichTextLabel with formatted string
-		not_arduino_readings.text = "Mouse Scale Mode: On\nMouse X: %.2f\nAngle: %.2f°" % [mouse_x, angle]
-	else:
-		# Display when mouse scale mode is off
-		not_arduino_readings.text = "Mouse Scale Mode: Off"
-	
-	rotate_arms(angle)
+	if not ArduinoConn.IsConnected():
+		if mouse_scale_mode:
+			var mouse_x = get_viewport().get_mouse_position().x
+			var viewport_center_x = get_viewport().size.x / 2
+			angle = (mouse_x - viewport_center_x) / 4.0
+			# Update RichTextLabel with formatted string
+			not_arduino_readings.text = "Mouse Scale Mode: On\nMouse X: %.2f\nAngle: %.2f°" % [mouse_x, angle]
+		else:
+			# Display when mouse scale mode is off
+			not_arduino_readings.text = "Mouse Scale Mode: Off"
+		
+		rotate_arms(angle)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
