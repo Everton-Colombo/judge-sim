@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MC750"
-run/main_scene="uid://01jrcft1518t"
+run/main_scene="uid://co82tpki3jdgp"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 

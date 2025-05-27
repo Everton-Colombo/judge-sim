@@ -22,11 +22,9 @@ texture = ExtResource("2_8ro1l")
 
 [node name="rightMarker" type="Node2D" parent="Arms"]
 position = Vector2(255.955, 23.681)
-scale = Vector2(1, 1)
 
 [node name="RightBasket" type="Sprite2D" parent="Arms/rightMarker"]
 position = Vector2(-3.05176e-05, -7.62939e-06)
-scale = Vector2(1, 1)
 texture = ExtResource("3_u0t31")
 offset = Vector2(0, 150)
 
@@ -34,6 +32,5 @@ offset = Vector2(0, 150)
 position = Vector2(-256.036, 24.2895)
 
 [node name="LeftBasket" type="Sprite2D" parent="Arms/leftMarker"]
-scale = Vector2(1, 1)
 texture = ExtResource("3_u0t31")
 offset = Vector2(0, 150)

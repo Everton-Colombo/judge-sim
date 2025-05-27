@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://co82tpki3jdgp"]
+[gd_scene load_steps=3 format=3 uid="uid://co82tpki3jdgp"]
+
+[ext_resource type="Script" uid="uid://djr8106ubl3yd" path="res://scripts/main_menu.gd" id="1_d0hcd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_po3a6"]
 bg_color = Color(1, 1, 1, 1)
@@ -16,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d0hcd")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -34,3 +37,5 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_po3a6")
 text = "Start Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

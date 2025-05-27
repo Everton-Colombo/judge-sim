@@ -18,6 +18,12 @@ offset_top = 7.0
 offset_right = 1083.0
 offset_bottom = 298.0
 
+[node name="Not Arduino Readings" type="RichTextLabel" parent="."]
+offset_left = 124.0
+offset_right = 328.0
+offset_bottom = 122.0
+text = "NOT ARDUINO READINGS"
+
 [node name="Scale" parent="." instance=ExtResource("2_oesf7")]
 position = Vector2(259, 319)
 rotation = -0.000353024
