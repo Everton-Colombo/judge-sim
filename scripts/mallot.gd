@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hit_sound_effect: AudioStreamPlayer = $"Hit Sound Effect"
 
 func strike():
 	# Play the strike animation

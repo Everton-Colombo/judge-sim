@@ -1,13 +1,16 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var music_playing: bool = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-# If the start button is pressed, change the scene to the Debug Screen
-func _on_button_pressed() -> void:
+func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/screens/DebugScreen.tscn")
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+func _on_music_pressed() -> void:
+	if music_playing:
+		Music.stop()
+	else:
+		Music.play()
+	music_playing = not music_playing

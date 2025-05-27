@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ArduinoConn="*res://scripts/ArduinoConn.cs"
+Music="*res://scenes/music.tscn"
 
 [dotnet]
 

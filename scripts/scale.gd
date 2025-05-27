@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 		else:
 			# Display when mouse scale mode is off
 			not_arduino_readings.text = "Mouse Scale Mode: Off"
-		
+
 		rotate_arms(angle)
 
 func _input(event: InputEvent) -> void:

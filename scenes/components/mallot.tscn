@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg73swyw5b21v"]
+[gd_scene load_steps=7 format=3 uid="uid://dg73swyw5b21v"]
 
 [ext_resource type="Script" uid="uid://dq7l6udyxf3dn" path="res://scripts/mallot.gd" id="1_l40v5"]
 [ext_resource type="Texture2D" uid="uid://cwy465b13j42p" path="res://assets/import/mallot.png" id="1_lrdwy"]
+[ext_resource type="AudioStream" uid="uid://b4b4xelsdb3hf" path="res://assets/sounds/hit.wav" id="3_g4fa3"]
 
 [sub_resource type="Animation" id="Animation_g4fa3"]
 length = 0.001
@@ -32,6 +33,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [-1.5708, -1.0472, -1.5708, -1.48353, -1.5708]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hit Sound Effect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_g4fa3")
+}],
+"times": PackedFloat32Array(0.233333)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_40buq"]
 _data = {
@@ -63,3 +79,7 @@ region_rect = Rect2(504, 640, 488, 232)
 libraries = {
 &"": SubResource("AnimationLibrary_40buq")
 }
+
+[node name="Hit Sound Effect" type="AudioStreamPlayer" parent="."]
+volume_db = -11.243
+autoplay = true
