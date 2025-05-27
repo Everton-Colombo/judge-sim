@@ -5,6 +5,7 @@ extends Node2D
 var max_rotation_angle: float = 30.0
 var current_rotation: float = 0.0
 var mouse_scale_mode: bool = false # For moving the scale with the mouse
+var angle: float = 0.0
 
 @onready var not_arduino_readings: RichTextLabel = $"../Not Arduino Readings"
 @export var left_basket: Sprite2D
@@ -37,18 +38,16 @@ func _process(delta: float) -> void:
 	if mouse_scale_mode and not ArduinoConn.IsConnected():
 		var mouse_x = get_viewport().get_mouse_position().x
 		var viewport_center_x = get_viewport().size.x / 2
-		var angle = (mouse_x - viewport_center_x) / 4.0
-		rotate_arms(angle)
+		angle = (mouse_x - viewport_center_x) / 4.0
 		# Update RichTextLabel with formatted string
 		not_arduino_readings.text = "Mouse Scale Mode: On\nMouse X: %.2f\nAngle: %.2f°" % [mouse_x, angle]
 	else:
 		# Display when mouse scale mode is off
 		not_arduino_readings.text = "Mouse Scale Mode: Off"
+	
+	rotate_arms(angle)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_Z:
 			mouse_scale_mode = not mouse_scale_mode
-			# Update label to reflect mode change
-	
-		
