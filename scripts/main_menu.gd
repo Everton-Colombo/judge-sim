@@ -3,7 +3,7 @@ extends Control
 var music_playing: bool = true
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/screens/DebugScreen.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/GameScreen.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

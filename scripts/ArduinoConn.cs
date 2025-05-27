@@ -32,7 +32,7 @@ public partial class ArduinoConn : Node
 	
 	// For emitting signals at regular intervals
 	private double elapsedTime = 0;
-	private double updateInterval = 0.05; // Update every 50ms
+	private double updateInterval = 50; // Update every 50ms
 
 	public override void _Ready()
 	{
@@ -98,13 +98,13 @@ public partial class ArduinoConn : Node
 					{
 						// Clear input buffer
 						serialPort.DiscardInBuffer();
-						
+
 						// Send request
 						serialPort.Write("R");
-						
+
 						DateTime startTime = DateTime.Now;
 						List<string> lines = new List<string>();
-						
+
 						while (true)
 						{
 							if (serialPort.BytesToRead > 0)
@@ -122,15 +122,15 @@ public partial class ArduinoConn : Node
 									break;
 								}
 							}
-							
+
 							// Check timeout (500ms)
 							if ((DateTime.Now - startTime).TotalMilliseconds > 500)
 								break;
-							
+
 							// Small sleep to prevent CPU hogging
 							Thread.Sleep(5);
 						}
-						
+
 						// Parse the data
 						foreach (string line in lines)
 						{
@@ -151,7 +151,7 @@ public partial class ArduinoConn : Node
 								catch { }
 							}
 						}
-						
+
 						// Emit signal for updated readings
 						CallDeferred(nameof(EmitReadingsSignal));
 					}
@@ -161,10 +161,12 @@ public partial class ArduinoConn : Node
 			{
 				GD.Print($"Polling error: {e.Message}");
 				connectionError = true;
-				
+
 				// Try to reconnect - use CallDeferred to call from main thread
 				CallDeferred(nameof(Reconnect));
 			}
+
+			Thread.Sleep((int)updateInterval);
 		}
 	}
 	

@@ -1,0 +1,11 @@
+The game will be text based, phoenix wright styled. The player will be presented with a selection of 5 cases; for each case, they'll read the case's description and a proposed sentence/decision. The player will have to judge if the given decision is appropriate for the described case, and will do so by tilting the scale towards either direction (left if it is too lenient, middle if it is appropriate, and right if it is too harsh); to make the selection, the player must then strike the hammer. The game internally knows if the decision presented to the player is appropriate or not; the goal is to collect this perception from the player and then, at the end, present what should have been the correct decision, along with the laws that would support it. It would also be interesting if the player could see what other players decided for each case.
+
+Each "case" should be modeled by an object that holds its title, description, correct verdict and laws that support it, as well as two incorrect verdicts (one too lenient and other too harsh in comparison to the correct verdict) that could be proposed for it. There should also be a way to store the history of player judgement for each of the proposed verdict (be it the correct verdict or not).
+
+The game screens include:
+Title screen, with play, options, and credits buttons.
+The play button should direct the user to the game screen;
+The options button should open an options pane, with calibration settings for the external input devices, sound options, etc;
+The credits button should just present a text block with the author names.
+Game screen: where the player is presented with the case description and proposed verdict. There should be indicators that mirror the position of the real-world scale, as well as if a knock was detected. The case should be presented by a judge figure, with a type-writer dialogue box, like in phoenix wright or undertale.
+Results screen: displayed after the 5 cases were judged by the player. Should display information about whether the player was correct, what the correct verdict should have been, and the laws supporting it. It should also display the history of player decisions for that case/verdict.

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1nbsij0oy4sj"]
+[gd_scene load_steps=4 format=3 uid="uid://b1nbsij0oy4sj"]
 
 [ext_resource type="Texture2D" uid="uid://bphjo46sdqxt7" path="res://assets/import/JPGS/Paper Texture1.jpg" id="1_28gh7"]
-[ext_resource type="Script" uid="uid://bjugfybfxmf2" path="res://scenes/components/paper_document.gd" id="2_f67vt"]
+[ext_resource type="Script" uid="uid://bjugfybfxmf2" path="res://scripts/paper_document.gd" id="2_rn8v4"]
 [ext_resource type="FontFile" uid="uid://7g7ohepduya2" path="res://assets/fonts/XTypewriter-Regular.ttf" id="3_eynlh"]
-[ext_resource type="Resource" uid="uid://divrdcocceyc3" path="res://assets/custom_resources/sample_case.tres" id="3_ttmks"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -31,9 +30,8 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 texture = ExtResource("1_28gh7")
 expand_mode = 3
-script = ExtResource("2_f67vt")
+script = ExtResource("2_rn8v4")
 characters_per_page = 600
-case = ExtResource("3_ttmks")
 
 [node name="TextContainer" type="MarginContainer" parent="MarginContainer/PaperDocument"]
 layout_mode = 1

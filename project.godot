@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ArduinoConn="*res://scripts/ArduinoConn.cs"
 Music="*res://scenes/music.tscn"
+GameData="*res://scripts/game_data.gd"
 
 [dotnet]
 

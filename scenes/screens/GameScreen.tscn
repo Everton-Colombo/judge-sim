@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cevqkl7gjsp3u"]
+
+[ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_a0wgl"]
+[ext_resource type="Script" uid="uid://qcot020d8bfu" path="res://scripts/game_manager.gd" id="1_d2sms"]
+[ext_resource type="PackedScene" uid="uid://dg73swyw5b21v" path="res://scenes/components/mallot.tscn" id="2_d2sms"]
+[ext_resource type="PackedScene" uid="uid://b3vsclu3uvado" path="res://scenes/components/scale.tscn" id="3_alg88"]
+
+[node name="GameScreen" type="Node2D"]
+script = ExtResource("1_d2sms")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UILayer" instance=ExtResource("1_a0wgl")]
+
+[node name="ContentLayer" type="Node2D" parent="."]
+
+[node name="Mallot" parent="ContentLayer" instance=ExtResource("2_d2sms")]
+position = Vector2(510, 491)
+scale = Vector2(0.5, 0.5)
+
+[node name="Scale" parent="ContentLayer" instance=ExtResource("3_alg88")]
+position = Vector2(235, 349)
+scale = Vector2(0.5, 0.5)

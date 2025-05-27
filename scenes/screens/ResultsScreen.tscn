@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg7fmr7515eha"]
+
+[ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_m8ero"]
+[ext_resource type="Script" uid="uid://dymt3t5welgy6" path="res://scripts/results_screen.gd" id="2_gnsfi"]
+
+[node name="ResultsScreen" type="Node2D"]
+script = ExtResource("2_gnsfi")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UILayer" instance=ExtResource("1_m8ero")]
