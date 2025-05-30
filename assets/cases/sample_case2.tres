@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_v254b")
 title = "City vs. Thompson - Noise Ordinance Violation"
-description = "Sarah Thompson, owner of 'The Blue Note' jazz club, is charged with violating the city's noise ordinance. Multiple neighbors have complained about loud music continuing past 11 PM on weeknights, exceeding the 55-decibel limit by 15 decibels. Thompson argues her establishment provides cultural value to the community and that the ordinance unfairly targets small businesses. The club has been operating for 3 years without prior violations."
+description = "Sarah Thompson, owner of 'The Blue Note' jazz club, is charged with violating the city's noise ordinance. Multiple neighbors have complained about loud music continuing past 11 PM on weeknights, exceeding the 55-decibel limit by 15 decibels. Thompson argues her establishment provides cultural value to the community and that the ordinance unfairly targets small businesses. |The club has been operating for 3 years without prior violations."
 correct_verdict = "Guilty with fine"
 lenient_verdict = "Warning with community service"
 harsh_verdict = "Guilty with fine and 30-day closure"

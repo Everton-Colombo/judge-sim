@@ -35,76 +35,17 @@ func split_into_pages():
 	
 	# Text processing variables
 	var remaining_text = full_text
-	
-	# Get font metrics for better approximation
-	var font = text_content.get_theme_font("normal_font")
-	if font == null:
-		font = text_content.get_theme_font("font")
-	
-	var font_size = text_content.get_theme_font_size("normal_font_size")
-	if font_size <= 0:
-		font_size = text_content.get_theme_font_size("font_size")
-	if font_size <= 0:
-		font_size = 16 # Default fallback
-	
-	# Calculate available space (if possible)
-	var available_width = text_content.size.x - text_content.get_theme_constant("margin_left") - text_content.get_theme_constant("margin_right")
-	
-	# Approximate chars per line
-	var avg_char_width = font_size * 0.6 # Rough estimate
-	var chars_per_line = int(available_width / avg_char_width)
-	
-	# Use a more accurate chars per page calculation
-	var chars_per_page = characters_per_page
-	if chars_per_line > 0:
-		# Adjust based on estimated line length
-		chars_per_page = chars_per_line * (characters_per_page / 80) # Assuming default was based on 80 chars per line
+	var page_break_char = "|" # Configurable special character for page breaks
 	
 	while remaining_text.length() > 0:
-		var target_length = min(chars_per_page, remaining_text.length())
-		var break_point = target_length
+		var break_point = -1
 		
-		# Try to find natural break points if we're not at the end
-		if target_length < remaining_text.length():
-			# Look for paragraph breaks (double newline)
-			var paragraph_break = -1
-			for i in range(target_length - 1, int(target_length * 0.7), -1):
-				if i >= 0 and i < remaining_text.length() - 1 and remaining_text[i] == "\n" and remaining_text[i + 1] == "\n":
-					paragraph_break = i
-					break
-			
-			# Look for single newlines
-			var newline_break = -1
-			if paragraph_break < 0:
-				for i in range(target_length - 1, int(target_length * 0.8), -1):
-					if i >= 0 and remaining_text[i] == "\n":
-						newline_break = i
-						break
-			
-			# Look for sentence breaks (period followed by space)
-			var sentence_break = -1
-			if paragraph_break < 0 and newline_break < 0:
-				for i in range(target_length - 1, int(target_length * 0.8), -1):
-					if i >= 0 and i < remaining_text.length() - 1 and remaining_text[i] == "." and remaining_text[i + 1] == " ":
-						sentence_break = i
-						break
-			
-			# Look for word breaks (spaces)
-			var word_break = -1
-			if paragraph_break < 0 and newline_break < 0 and sentence_break < 0:
-				word_break = remaining_text.rfind(" ", target_length)
-				if word_break < int(target_length * 0.7):
-					word_break = -1 # Too far back, don't use it
-			
-			# Choose the best break point
-			if paragraph_break > 0:
-				break_point = paragraph_break + 2 # Include the double newlines
-			elif newline_break > 0:
-				break_point = newline_break + 1 # Include the newline
-			elif sentence_break > 0:
-				break_point = sentence_break + 2 # Include period and space
-			elif word_break > 0:
-				break_point = word_break + 1 # Include the space
+		# Look for the special character
+		break_point = remaining_text.find(page_break_char)
+		
+		# If no special character is found, use the entire remaining text
+		if break_point == -1:
+			break_point = remaining_text.length()
 		
 		# Ensure we're making progress (min 1 character)
 		break_point = max(1, break_point)
@@ -112,7 +53,7 @@ func split_into_pages():
 		
 		# Add page and update remaining text
 		pages.append(remaining_text.substr(0, break_point))
-		remaining_text = remaining_text.substr(break_point)
+		remaining_text = remaining_text.substr(break_point + 1 if break_point < remaining_text.length() else break_point)
 	
 	# Update total pages
 	update_page_indicator()
@@ -219,8 +160,8 @@ func format_results_to_rich_text(results: Array[Dictionary]) -> String:
 	var performance_text = get_performance_assessment(accuracy)
 	formatted_text += "[center][font_size=20]%s[/font_size][/center]\n\n" % performance_text
 	
-	# Separator
-	formatted_text += "[center]═══════════════════════════════[/center]\n\n"
+	# Separator PAGE BREAK
+	formatted_text += "[center]═══════════════════════════════[/center]|\n\n"
 	
 	# Individual case results
 	for i in range(results.size()):
@@ -229,7 +170,8 @@ func format_results_to_rich_text(results: Array[Dictionary]) -> String:
 		
 		# Add page break suggestion after each case (except the last)
 		if i < results.size() - 1:
-			formatted_text += "\n[center]───────────────────[/center]\n\n"
+			# PAGE BREAK
+			formatted_text += "\n[center]───────────────────[/center]|\n\n"
 	
 	return formatted_text
 
@@ -252,7 +194,8 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	case_text += "[font_size=16]%s[/font_size]\n\n" % description_preview
 	
 	# Presented verdict and player decision
-	case_text += "[font_size=18][color=#B8860B]Presented Verdict:[/color][/font_size]\n"
+	#PAGE BREAK
+	case_text += "|[font_size=18][color=#B8860B]Presented Verdict:[/color][/font_size]\n"
 	case_text += "%s\n\n" % decision.presented_verdict_text
 	
 	case_text += "[font_size=18][color=#4682B4]Your Decision:[/color][/font_size]\n"
