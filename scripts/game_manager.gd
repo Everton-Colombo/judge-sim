@@ -9,7 +9,6 @@ signal all_cases_completed()
 
 var cases: Array[Case] = []
 var current_case_index: int = 0
-var player_decisions: Array[Dictionary] = []
 var total_cases: int = 5
 
 @onready var paper_document: PaperDocument = $UILayer/UI/MarginContainer/PaperDocument
@@ -20,9 +19,6 @@ var total_cases: int = 5
 
 var results_scene: PackedScene = preload("res://scenes/screens/ResultsScreen.tscn")
 
-# Stores the current case verdict
-# Should be updated every time a case is loaded
-var verdict_info: Dictionary
 func _ready():
 	mallot.struck.connect(on_mallot_struck)
 	
@@ -39,7 +35,17 @@ func display_current_case():
 		return
 	
 	# Every time the current case is displayed, update verdict info
-	verdict_info = get_current_case_verdict()
+	record_case_data()
+
+	var verdict_info: Dictionary = {
+		"text": null,
+		"type": null
+	}
+	var current_decisions: Dictionary = GameData.get_decisions()[current_case_index]
+	
+	verdict_info["text"] = current_decisions["presented_verdict_text"]
+	verdict_info["type"] = current_decisions["presented_verdict_type"]
+	
 	paper_document.load_case(current_case, verdict_info)
 
 func on_mallot_struck():
@@ -48,7 +54,7 @@ func on_mallot_struck():
 		push_error("No current case available.")
 		return
 	
-	record_player_decision(scale.scale_position, verdict_info)
+	record_player_decision(scale.scale_position)
 	await get_tree().create_timer(0.75).timeout
 	await ui.play_splash_animation(scale.scale_position)
 	if not next_case():
@@ -120,20 +126,33 @@ func get_current_case_verdict() -> Dictionary:
 		"text": verdict_text
 	}
 
-# Records the player's decision
-func record_player_decision(scale_position: String, verdict_info: Dictionary) -> void:
-	var decision = {
+# Records the current case data
+func record_case_data() -> void:
+	# Chooses the proposed verdict for this case
+	var presented_verdict: Dictionary = get_current_case_verdict()
+
+	var case_data = {
 		"case_index": current_case_index,
 		"case_title": get_current_case().title,
-		"presented_verdict_type": verdict_info.type,
-		"presented_verdict_text": verdict_info.text,
-		"player_choice": scale_position, # "left", "center", "right"
-		"timestamp": Time.get_unix_time_from_system()
+		"presented_verdict_type": presented_verdict["type"],
+		"presented_verdict_text": presented_verdict["text"],
+		"timestamp": 0,
+		"player_choice": null
 	}
 	
-	player_decisions.append(decision)
+	GameData.get_decisions().append(case_data)
+
+# Records the player's decision
+func record_player_decision(scale_position: String) -> void:
+	# Gets the current dictionary of player decisions
+	var current_decisions: Dictionary = GameData.get_decisions()[current_case_index]
+	
+	# Updates the dict with the player decision
+	current_decisions["player_choice"] = scale_position
+	current_decisions["timestamp"] = Time.get_unix_time_from_system()
+	
 	case_completed.emit(current_case_index, scale_position)
-	print("Recorded decision for case: ", decision.case_title, " - Player chose: ", scale_position)
+	print("Recorded decision for case: ", current_decisions["case_title"], " - Player chose: ", scale_position)
 
 # Checks if there is a next case
 func next_case() -> bool:
@@ -161,13 +180,13 @@ func is_decision_correct(player_choice: String, verdict_type: String) -> bool:
 func get_results() -> Array[Dictionary]:
 	var results: Array[Dictionary] = []
 	
-	for i in range(player_decisions.size()):
-		var decision = player_decisions[i]
+	for i in range(GameData.get_decisions().size()):
+		var decision = GameData.get_decisions()[i]
 		var case_data = cases[decision.case_index]
 		
 		var is_correct = is_decision_correct(
-			decision.player_choice,
-			decision.presented_verdict_type
+			decision["player_choice"],
+			decision["presented_verdict_type"]
 		)
 		
 		var result = {
@@ -184,7 +203,7 @@ func get_results() -> Array[Dictionary]:
 
 func reset_game() -> void:
 	current_case_index = 0
-	player_decisions.clear()
+	GameData.get_decisions().clear()
 	load_all_cases()
 
 func get_progress() -> Dictionary:

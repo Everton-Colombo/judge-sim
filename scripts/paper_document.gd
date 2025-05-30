@@ -196,11 +196,11 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	# Presented verdict and player decision
 	#PAGE BREAK
 	case_text += "|[font_size=18][color=#B8860B]Presented Verdict:[/color][/font_size]\n"
-	case_text += "%s\n\n" % decision.presented_verdict_text
+	case_text += "%s\n\n" % decision["proposed_verdict_text"]
 	
 	case_text += "[font_size=18][color=#4682B4]Your Decision:[/color][/font_size]\n"
-	case_text += "Scale Position: [font_size=16]%s[/font_size]\n" % decision.player_choice.to_upper()
-	case_text += "Verdict Type: [font_size=16]%s[/font_size]\n\n" % decision.presented_verdict_type.to_upper()
+	case_text += "Scale Position: [font_size=16]%s[/font_size]\n" % decision["player_choice"].to_upper()
+	case_text += "Verdict Type: [font_size=16]%s[/font_size]\n\n" % decision["proposed_verdict_type"].to_upper()
 	
 	# Correct information
 	case_text += "[font_size=18][color=#2D5016]Correct Verdict:[/color][/font_size]\n"
@@ -214,7 +214,7 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	# Decision analysis
 	# PAGE BREAK
 	case_text += "|[font_size=16][color=#696969]Analysis:[/color][/font_size]\n"
-	case_text += get_decision_analysis(decision.presented_verdict_type, decision.player_choice, result.was_correct)
+	case_text += get_decision_analysis(decision["proposed_verdict_type"], decision["player_choice"], result.was_correct)
 	
 	return case_text
 

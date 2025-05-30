@@ -2,6 +2,7 @@ extends Node
 
 var game_results: Array[Dictionary] = []
 var current_cases: Array[Case] = []
+var player_decisions: Array[Dictionary] = []
 
 func set_game_results(results: Array[Dictionary]) -> void:
 	game_results = results.duplicate(true) # Deep copy to avoid reference issues
@@ -14,6 +15,12 @@ func set_cases(cases: Array[Case]) -> void:
 
 func get_cases() -> Array[Case]:
 	return current_cases
+
+func get_decisions() -> Array[Dictionary]:
+	return player_decisions
+
+func set_decisions(decisions: Array[Dictionary]) -> void:
+	player_decisions = decisions.duplicate(true)
 
 func clear_data() -> void:
 	game_results.clear()
