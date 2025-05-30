@@ -20,6 +20,9 @@ var total_cases: int = 5
 
 var results_scene: PackedScene = preload("res://scenes/screens/ResultsScreen.tscn")
 
+# Stores the current case verdict
+# Should be updated every time a case is loaded
+var verdict_info: Dictionary
 func _ready():
 	mallot.struck.connect(on_mallot_struck)
 	
@@ -28,13 +31,16 @@ func _ready():
 	load_all_cases()
 	display_current_case()
 
+# Displays the current case
 func display_current_case():
 	var current_case = get_current_case()
 	if current_case == null:
 		push_error("No current case available.")
 		return
 	
-	paper_document.load_case(current_case, get_current_case_verdict())
+	# Every time the current case is displayed, update verdict info
+	verdict_info = get_current_case_verdict()
+	paper_document.load_case(current_case, verdict_info)
 
 func on_mallot_struck():
 	var current_case = get_current_case()
@@ -42,7 +48,6 @@ func on_mallot_struck():
 		push_error("No current case available.")
 		return
 	
-	var verdict_info = get_current_case_verdict()
 	record_player_decision(scale.scale_position, verdict_info)
 	await get_tree().create_timer(0.75).timeout
 	await ui.play_splash_animation(scale.scale_position)
@@ -92,6 +97,7 @@ func get_current_case() -> Case:
 		return cases[current_case_index]
 	return null
 
+# Get random case verdict
 func get_current_case_verdict() -> Dictionary:
 	var current_case = get_current_case()
 	if current_case == null:
@@ -114,6 +120,7 @@ func get_current_case_verdict() -> Dictionary:
 		"text": verdict_text
 	}
 
+# Records the player's decision
 func record_player_decision(scale_position: String, verdict_info: Dictionary) -> void:
 	var decision = {
 		"case_index": current_case_index,
@@ -128,6 +135,7 @@ func record_player_decision(scale_position: String, verdict_info: Dictionary) ->
 	case_completed.emit(current_case_index, scale_position)
 	print("Recorded decision for case: ", decision.case_title, " - Player chose: ", scale_position)
 
+# Checks if there is a next case
 func next_case() -> bool:
 	current_case_index += 1
 	
@@ -137,6 +145,7 @@ func next_case() -> bool:
 	
 	return true
 
+# Matches the player choice with the decision
 func is_decision_correct(player_choice: String, verdict_type: String) -> bool:
 	match verdict_type:
 		"correct":
@@ -148,6 +157,7 @@ func is_decision_correct(player_choice: String, verdict_type: String) -> bool:
 	
 	return false
 
+# Returns the final results for each case
 func get_results() -> Array[Dictionary]:
 	var results: Array[Dictionary] = []
 	

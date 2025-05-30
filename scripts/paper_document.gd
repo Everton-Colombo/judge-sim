@@ -212,7 +212,8 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 		case_text += "%s\n\n" % case_data.explanation
 	
 	# Decision analysis
-	case_text += "[font_size=16][color=#696969]Analysis:[/color][/font_size]\n"
+	# PAGE BREAK
+	case_text += "|[font_size=16][color=#696969]Analysis:[/color][/font_size]\n"
 	case_text += get_decision_analysis(decision.presented_verdict_type, decision.player_choice, result.was_correct)
 	
 	return case_text
