@@ -16,6 +16,7 @@ var total_cases: int = 5
 @onready var mallot: Mallot = $ContentLayer/Mallot
 @onready var scale: Scale = $ContentLayer/Scale
 
+@onready var ui: UI = $UILayer/UI
 
 var results_scene: PackedScene = preload("res://scenes/screens/ResultsScreen.tscn")
 
@@ -43,7 +44,8 @@ func on_mallot_struck():
 	
 	var verdict_info = get_current_case_verdict()
 	record_player_decision(scale.scale_position, verdict_info)
-	
+	await get_tree().create_timer(0.75).timeout
+	await ui.play_splash_animation(scale.scale_position)
 	if not next_case():
 		# Store results in singleton before changing scenes
 		GameData.set_game_results(get_results())
