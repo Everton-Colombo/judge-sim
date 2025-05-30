@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg7fmr7515eha"]
+[gd_scene load_steps=4 format=3 uid="uid://dg7fmr7515eha"]
 
 [ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_m8ero"]
 [ext_resource type="Script" uid="uid://dymt3t5welgy6" path="res://scripts/results_screen.gd" id="2_gnsfi"]
+[ext_resource type="FontFile" uid="uid://fxkj3dj46x7o" path="res://assets/fonts/XTypewriter-Bold.ttf" id="3_a1ljd"]
 
 [node name="ResultsScreen" type="Node2D"]
 script = ExtResource("2_gnsfi")
@@ -9,3 +10,14 @@ script = ExtResource("2_gnsfi")
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UILayer" instance=ExtResource("1_m8ero")]
+
+[node name="Main Menu Button" type="Button" parent="UILayer"]
+offset_left = 113.0
+offset_top = 90.0
+offset_right = 390.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("3_a1ljd")
+theme_override_font_sizes/font_size = 40
+text = "MAIN MENU"
+
+[connection signal="pressed" from="UILayer/Main Menu Button" to="." method="_on_main_menu_button_pressed"]

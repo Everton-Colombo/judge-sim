@@ -10,3 +10,7 @@ func _ready() -> void:
 	
 	# Load results into the paper document
 	paper_document.load_results(game_results)
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/screens/MainMenu.tscn")

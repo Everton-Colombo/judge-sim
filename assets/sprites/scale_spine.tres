@@ -1,7 +1,11 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b87ye3gub6f34"]
+[gd_resource type="AtlasTexture" load_steps=3 format=3 uid="uid://b87ye3gub6f34"]
 
 [ext_resource type="Texture2D" uid="uid://betrb73snjemr" path="res://assets/import/scale.png" id="1_8lx0m"]
 
-[resource]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lx0m"]
 atlas = ExtResource("1_8lx0m")
-region = Rect2(80, 80, 224, 864)
+region = Rect2(0, 0, 1024, 1024)
+
+[resource]
+atlas = SubResource("AtlasTexture_8lx0m")
+region = Rect2(80, 85, 227, 859)

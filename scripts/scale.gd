@@ -31,19 +31,19 @@ func _ready():
 
 	ArduinoConn.ReadingsUpdated.connect(handle_readings)
 
-func handle_readings(scale, knock):
-	var scale_mapped = 30 - (scale * 60.0 / 1023.0);
+func handle_readings(f_scale, knock):
+	var scale_mapped = 30 - (f_scale * 60.0 / 1023.0);
 	scale_mapped *= -1;
 	rotate_arms(scale_mapped)
 
-func rotate_arms(angle: float):
+func rotate_arms(f_angle: float):
 	# Limit the rotation to the max angle
-	angle = clamp(angle, -max_rotation_angle, max_rotation_angle)
-	$Arms.rotation_degrees = angle
-	current_rotation = angle
+	f_angle = clamp(f_angle, -max_rotation_angle, max_rotation_angle)
+	$Arms.rotation_degrees = f_angle
+	current_rotation = f_angle
 	
 	# Update baskets to maintain downward orientation
-	update_basket_rotations(angle)
+	update_basket_rotations(f_angle)
 
 func update_basket_rotations(arm_angle: float):
 	# Counter-rotate baskets to maintain absolute 0 rotation
@@ -54,7 +54,7 @@ func update_basket_rotations(arm_angle: float):
 	if right_basket:
 		right_basket.rotation_degrees = - arm_angle
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if ArduinoConn.IsConnected():
 		return
 
