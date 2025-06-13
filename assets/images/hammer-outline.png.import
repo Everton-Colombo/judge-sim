@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clhjnxhu7x70s"
-path="res://.godot/imported/menu.jpg-3a06a9ac1d1b603fe9c1ac8e05575bd3.ctex"
+uid="uid://dkir5j3d32vwo"
+path="res://.godot/imported/hammer-outline.png-745d08c6269945808259ce19bfceeb9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/menu.jpg"
-dest_files=["res://.godot/imported/menu.jpg-3a06a9ac1d1b603fe9c1ac8e05575bd3.ctex"]
+source_file="res://assets/images/hammer-outline.png"
+dest_files=["res://.godot/imported/hammer-outline.png-745d08c6269945808259ce19bfceeb9e.ctex"]
 
 [params]
 
