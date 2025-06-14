@@ -13,6 +13,7 @@ var current_page: int = 0
 @onready var next_btn: Button = $ButtonContainer/NextPageButton
 @onready var prev_btn: Button = $ButtonContainer/PrevPageButton
 @onready var page_indicator: RichTextLabel = $PageText
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	print("Paper document ready")
@@ -59,6 +60,8 @@ func split_into_pages():
 	update_page_indicator()
 
 func display_current_page():
+	audio_player.play()
+
 	if pages.size() > 0 and current_page < pages.size():
 		text_content.text = pages[current_page]
 	else:

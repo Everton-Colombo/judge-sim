@@ -56,7 +56,9 @@ func on_mallot_struck():
 	
 	record_player_decision(scale.scale_position)
 	await get_tree().create_timer(0.75).timeout
-	await ui.play_splash_animation(scale.scale_position)
+	var text_map = {"left": "LENIENTE", "center": "APROPRIADA", "right": "RÍGIDA"}
+	var text = text_map[scale.scale_position]
+	await ui.play_splash_animation(text)
 	if not next_case():
 		# Store results in singleton before changing scenes
 		GameData.set_game_results(get_results())
