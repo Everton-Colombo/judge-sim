@@ -11,8 +11,8 @@ var angle: float = 0.0
 @export var left_threshold: float = -10.0 # Degrees - anything below this is "left"
 @export var right_threshold: float = 10.0 # Degrees - anything above this is "right"
 
-@export var left_basket: Sprite2D
-@export var right_basket: Sprite2D
+@onready var left_basket: Sprite2D = $Arms/leftMarker/LeftBasket
+@onready var right_basket: Sprite2D = $Arms/rightMarker/RightBasket
 
 ## Gets the current scale position as a string
 var scale_position: String:

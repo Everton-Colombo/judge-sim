@@ -40,8 +40,9 @@ expand_mode = 5
 
 [node name="Hammer-outline" type="Sprite2D" parent="Background"]
 modulate = Color(0.521569, 0.690196, 0.941176, 1)
-position = Vector2(186, 214)
+position = Vector2(198, 297)
 rotation = 0.778845
+scale = Vector2(0.717473, 0.717473)
 texture = ExtResource("4_k5e5a")
 
 [node name="Lady-justice-outline" type="Sprite2D" parent="Background"]

@@ -1,36 +1,33 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3vsclu3uvado"]
 
 [ext_resource type="Script" uid="uid://c5vcgyy21egwv" path="res://scripts/scale.gd" id="1_8ro1l"]
-[ext_resource type="Texture2D" uid="uid://b87ye3gub6f34" path="res://assets/sprites/scale_spine.tres" id="1_mhhlm"]
-[ext_resource type="Texture2D" uid="uid://b824gpe418l08" path="res://assets/sprites/scale_arms.tres" id="2_8ro1l"]
-[ext_resource type="Texture2D" uid="uid://baiiph7q787e3" path="res://assets/sprites/scale_basket.tres" id="3_u0t31"]
+[ext_resource type="Texture2D" uid="uid://chr3kk6pnye3n" path="res://assets/images/objects/scale/scale-arms.png" id="2_8ro1l"]
+[ext_resource type="Texture2D" uid="uid://btcwsfuw66ajs" path="res://assets/images/objects/scale/scale-plate.png" id="3_u0t31"]
+[ext_resource type="Texture2D" uid="uid://bswm6ftubud22" path="res://assets/images/objects/scale/scale-spine.png" id="4_46op6"]
 
-[node name="Scale" type="Node2D" node_paths=PackedStringArray("left_basket", "right_basket")]
+[node name="Scale" type="Node2D"]
 rotation = 0.00113067
 script = ExtResource("1_8ro1l")
-left_basket = NodePath("Arms/leftMarker/LeftBasket")
-right_basket = NodePath("Arms/rightMarker/RightBasket")
-
-[node name="Spine" type="Sprite2D" parent="."]
-position = Vector2(0, 147.75)
-scale = Vector2(1, 0.656829)
-texture = ExtResource("1_mhhlm")
 
 [node name="Arms" type="Sprite2D" parent="."]
-position = Vector2(0, -56)
+position = Vector2(-0.98, 20)
 texture = ExtResource("2_8ro1l")
 
 [node name="rightMarker" type="Node2D" parent="Arms"]
-position = Vector2(255.955, 23.681)
+position = Vector2(120, 15)
 
 [node name="RightBasket" type="Sprite2D" parent="Arms/rightMarker"]
-position = Vector2(-3.05176e-05, -7.62939e-06)
 texture = ExtResource("3_u0t31")
-offset = Vector2(0, 150)
+offset = Vector2(0.543625, 69.41)
 
 [node name="leftMarker" type="Node2D" parent="Arms"]
-position = Vector2(-256.036, 24.2895)
+position = Vector2(-120, 15)
 
 [node name="LeftBasket" type="Sprite2D" parent="Arms/leftMarker"]
 texture = ExtResource("3_u0t31")
-offset = Vector2(0, 150)
+offset = Vector2(0.543625, 69.41)
+
+[node name="Spine" type="Sprite2D" parent="."]
+position = Vector2(0, 147.75)
+scale = Vector2(1, 0.75)
+texture = ExtResource("4_46op6")
