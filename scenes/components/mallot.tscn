@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg73swyw5b21v"]
+[gd_scene load_steps=8 format=3 uid="uid://dg73swyw5b21v"]
 
 [ext_resource type="Script" uid="uid://dq7l6udyxf3dn" path="res://scripts/mallot.gd" id="1_l40v5"]
-[ext_resource type="Texture2D" uid="uid://cwy465b13j42p" path="res://assets/import/mallot.png" id="1_lrdwy"]
+[ext_resource type="Texture2D" uid="uid://bo8b77cwhjx0g" path="res://assets/images/objects/hammer/hammer.png" id="2_40buq"]
+[ext_resource type="Texture2D" uid="uid://bepe0tloxqkxj" path="res://assets/images/objects/hammer/pad.png" id="3_5v8ky"]
 [ext_resource type="AudioStream" uid="uid://b4b4xelsdb3hf" path="res://assets/sounds/hit.wav" id="3_g4fa3"]
 
 [sub_resource type="Animation" id="Animation_g4fa3"]
@@ -59,20 +60,18 @@ _data = {
 script = ExtResource("1_l40v5")
 
 [node name="hammer" type="Sprite2D" parent="."]
-position = Vector2(250.918, -13.5596)
+position = Vector2(71, 0)
 rotation = -1.5708
 scale = Vector2(0.399038, 0.399038)
-texture = ExtResource("1_lrdwy")
-offset = Vector2(-0.32925, -361.448)
-region_enabled = true
+texture = ExtResource("2_40buq")
+offset = Vector2(1, -100)
 region_rect = Rect2(8, 104, 416, 816)
 
 [node name="pad" type="Sprite2D" parent="."]
-position = Vector2(-3.31389, 112.303)
+position = Vector2(7.45059e-09, 36)
 rotation = 0.00186309
 scale = Vector2(0.38362, 0.38362)
-texture = ExtResource("1_lrdwy")
-region_enabled = true
+texture = ExtResource("3_5v8ky")
 region_rect = Rect2(504, 640, 488, 232)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

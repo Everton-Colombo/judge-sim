@@ -15,8 +15,7 @@ script = ExtResource("1_d2sms")
 [node name="ContentLayer" type="Node2D" parent="."]
 
 [node name="Mallot" parent="ContentLayer" instance=ExtResource("2_d2sms")]
-position = Vector2(510, 491)
-scale = Vector2(0.5, 0.5)
+position = Vector2(419, 449)
 
 [node name="Scale" parent="ContentLayer" instance=ExtResource("3_alg88")]
 position = Vector2(235, 349)
