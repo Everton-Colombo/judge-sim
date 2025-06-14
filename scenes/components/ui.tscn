@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1nbsij0oy4sj"]
+[gd_scene load_steps=11 format=3 uid="uid://b1nbsij0oy4sj"]
 
 [ext_resource type="Script" uid="uid://bmg1op42764q3" path="res://scripts/ui.gd" id="1_14xgd"]
 [ext_resource type="Texture2D" uid="uid://bphjo46sdqxt7" path="res://assets/import/JPGS/Paper Texture1.jpg" id="1_28gh7"]
+[ext_resource type="Texture2D" uid="uid://03oknia0la4" path="res://assets/images/background/main-bg.png" id="2_hmqfj"]
 [ext_resource type="Script" uid="uid://bjugfybfxmf2" path="res://scripts/paper_document.gd" id="2_rn8v4"]
 [ext_resource type="FontFile" uid="uid://7g7ohepduya2" path="res://assets/fonts/XTypewriter-Regular.ttf" id="3_eynlh"]
 [ext_resource type="FontFile" uid="uid://fxkj3dj46x7o" path="res://assets/fonts/XTypewriter-Bold.ttf" id="4_ttmks"]
@@ -150,6 +151,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_14xgd")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hmqfj")
+expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

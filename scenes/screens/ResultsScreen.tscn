@@ -1,23 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg7fmr7515eha"]
+[gd_scene load_steps=11 format=3 uid="uid://dg7fmr7515eha"]
 
 [ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_m8ero"]
 [ext_resource type="Script" uid="uid://dymt3t5welgy6" path="res://scripts/results_screen.gd" id="2_gnsfi"]
-[ext_resource type="FontFile" uid="uid://fxkj3dj46x7o" path="res://assets/fonts/XTypewriter-Bold.ttf" id="3_a1ljd"]
+[ext_resource type="Texture2D" uid="uid://03oknia0la4" path="res://assets/images/background/main-bg.png" id="2_w1771"]
+[ext_resource type="Texture2D" uid="uid://bip26ompo28ll" path="res://assets/images/lady-justice-colored.png" id="3_y5l5n"]
+[ext_resource type="FontFile" uid="uid://cybi8wko5ffq3" path="res://assets/fonts/Mokgech-Regular.otf" id="4_w1771"]
+[ext_resource type="Texture2D" uid="uid://drsoybj54frtd" path="res://assets/images/background/btn-bg.png" id="5_v82pq"]
+[ext_resource type="Script" uid="uid://b30so3o16x815" path="res://scripts/btn.gd" id="6_1mmkg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q4m3p"]
+texture = ExtResource("5_v82pq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j7iab"]
+texture = ExtResource("5_v82pq")
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_17220"]
+texture = ExtResource("5_v82pq")
 
 [node name="ResultsScreen" type="Node2D"]
 script = ExtResource("2_gnsfi")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="UILayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w1771")
+expand_mode = 3
+
 [node name="UI" parent="UILayer" instance=ExtResource("1_m8ero")]
 
-[node name="Main Menu Button" type="Button" parent="UILayer"]
-offset_left = 113.0
-offset_top = 90.0
-offset_right = 390.0
-offset_bottom = 222.0
-theme_override_fonts/font = ExtResource("3_a1ljd")
-theme_override_font_sizes/font_size = 40
-text = "MAIN MENU"
+[node name="Lady-justice-colored" type="Sprite2D" parent="UILayer"]
+position = Vector2(147, 372)
+scale = Vector2(0.541833, 0.541833)
+texture = ExtResource("3_y5l5n")
 
-[connection signal="pressed" from="UILayer/Main Menu Button" to="." method="_on_main_menu_button_pressed"]
+[node name="Label" type="Label" parent="UILayer"]
+offset_left = 308.0
+offset_top = 164.0
+offset_right = 584.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("4_w1771")
+theme_override_font_sizes/font_size = 60
+text = "Resultados"
+
+[node name="BackBtn" type="Button" parent="UILayer"]
+custom_minimum_size = Vector2(150, 0)
+offset_left = 306.0
+offset_top = 518.0
+offset_right = 606.0
+offset_bottom = 613.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_w1771")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_q4m3p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j7iab")
+theme_override_styles/normal = SubResource("StyleBoxTexture_17220")
+text = "Voltar"
+script = ExtResource("6_1mmkg")
+tween_duration = 0.05
+
+[connection signal="pressed" from="UILayer/BackBtn" to="." method="_on_main_menu_button_pressed"]

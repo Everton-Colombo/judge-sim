@@ -32,8 +32,8 @@ func _ready():
 	ArduinoConn.ReadingsUpdated.connect(handle_readings)
 
 func handle_readings(f_scale, knock):
-	var scale_mapped = 30 - (f_scale * 60.0 / 1023.0);
-	scale_mapped *= -1;
+	# Map from range [200, 490] to [-30, 30]
+	var scale_mapped = -30 + (f_scale - 200) * 60.0 / 290.0
 	rotate_arms(scale_mapped)
 
 func rotate_arms(f_angle: float):
