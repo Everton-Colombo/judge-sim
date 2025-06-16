@@ -91,7 +91,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxTexture_upfyg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k5e5a")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cbd3m")
-text = "Start"
+text = "Jogar"
 script = ExtResource("7_upfyg")
 tween_duration = 0.05
 
@@ -105,7 +105,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxTexture_upfyg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k5e5a")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cbd3m")
-text = "Music"
+text = "Musica"
 script = ExtResource("7_upfyg")
 tween_duration = 0.05
 
@@ -119,6 +119,6 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxTexture_upfyg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k5e5a")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cbd3m")
-text = "Quit"
+text = "Sair"
 script = ExtResource("7_upfyg")
 tween_duration = 0.05

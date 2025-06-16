@@ -96,11 +96,11 @@ func format_case_to_rich_text(case_data: Case, proposed_verdict: Dictionary = {}
 	formatted_text += "[center][font_size=36]" + case_data.title + "[/font_size][/center]\n\n"
 	
 	# Format description section
-	formatted_text += "[font_size=24]Description[/font_size]\n"
+	formatted_text += "[font_size=24]Descrição[/font_size]\n"
 	formatted_text += case_data.description + "\n\n"
 	
 	# Format verdict section
-	formatted_text += "[font_size=24]Proposed Verdict[/font_size]\n"
+	formatted_text += "[font_size=24]Veredito Proposto[/font_size]\n"
 	formatted_text += proposed_verdict.get("text", case_data.correct_verdict) + "\n\n"
 
 	return formatted_text
@@ -139,7 +139,7 @@ func format_results_to_rich_text(results: Array[Dictionary]) -> String:
 	var formatted_text = ""
 	
 	# Title
-	formatted_text += "[center][font_size=42][color=#8B4513]JUDGMENT RESULTS[/color][/font_size][/center]\n\n"
+	formatted_text += "[center][font_size=42][color=#8B4513]RESULTADOS DO JULGAMENTO[/color][/font_size][/center]\n\n"
 	
 	# Calculate summary statistics
 	var correct_count = 0
@@ -151,10 +151,10 @@ func format_results_to_rich_text(results: Array[Dictionary]) -> String:
 	var accuracy = (float(correct_count) / float(total_cases)) * 100.0 if total_cases > 0 else 0.0
 	
 	# Summary section
-	formatted_text += "[center][font_size=28]SUMMARY[/font_size][/center]\n"
-	formatted_text += "[center]Cases Judged: %d[/center]\n" % total_cases
-	formatted_text += "[center]Correct Decisions: %d[/center]\n" % correct_count
-	formatted_text += "[center][color=%s]Accuracy: %.1f%%[/color][/center]\n\n" % [
+	formatted_text += "[center][font_size=28]SUMÁRIO[/font_size][/center]\n"
+	formatted_text += "[center]Casos Julgados: %d[/center]\n" % total_cases
+	formatted_text += "[center]Decisões Corretas: %d[/center]\n" % correct_count
+	formatted_text += "[center][color=%s]Precisão: %.1f%%[/color][/center]\n\n" % [
 		get_accuracy_color(accuracy),
 		accuracy
 	]
@@ -185,9 +185,9 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	
 	# Case header with result status
 	var status_color = "#2D5016" if result.was_correct else "#8B0000"
-	var status_text = "✓ CORRECT" if result.was_correct else "✗ INCORRECT"
+	var status_text = "✓ CORRETO" if result.was_correct else "✗ INCORRETO"
 	
-	case_text += "[font_size=24]CASE %d: %s[/font_size]\n" % [case_number, case_data.title]
+	case_text += "[font_size=24]CASO %d: %s[/font_size]\n" % [case_number, case_data.title]
 	case_text += "[color=%s][font_size=20]%s[/font_size][/color]\n\n" % [status_color, status_text]
 	
 	# Case description (abbreviated)
@@ -198,26 +198,26 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	
 	# Presented verdict and player decision
 	#PAGE BREAK
-	case_text += "|[font_size=18][color=#B8860B]Presented Verdict:[/color][/font_size]\n"
+	case_text += "|[font_size=18][color=#B8860B]Veredito Apresentado:[/color][/font_size]\n"
 	case_text += "%s\n\n" % decision["presented_verdict_text"]
 	
-	case_text += "[font_size=18][color=#4682B4]Your Decision:[/color][/font_size]\n"
-	case_text += "Scale Position: [font_size=16]%s[/font_size]\n" % decision["player_choice"].to_upper()
-	case_text += "Verdict Type: [font_size=16]%s[/font_size]\n\n" % decision["presented_verdict_type"].to_upper()
+	case_text += "[font_size=18][color=#4682B4]Sua decisão:[/color][/font_size]\n"
+	case_text += "Posição da balança: [font_size=16]%s[/font_size]\n" % decision["player_choice"].to_upper()
+	case_text += "Tipo do veredito: [font_size=16]%s[/font_size]\n\n" % decision["presented_verdict_type"].to_upper()
 	
 	# Correct information
-	case_text += "[font_size=18][color=#2D5016]Correct Verdict:[/color][/font_size]\n"
+	case_text += "[font_size=18][color=#2D5016]Veredito Correto:[/color][/font_size]\n"
 	case_text += "%s\n\n" % case_data.correct_verdict
 	
 	# Explanation if available
 	if not case_data.explanation.is_empty():
 		# PAGE BREAK
-		case_text += "|[font_size=18][color=#CD853F]Legal Explanation:[/color][/font_size]\n"
+		case_text += "|[font_size=18][color=#CD853F]Explicação Legal:[/color][/font_size]\n"
 		case_text += "%s\n\n" % case_data.explanation
 	
 	# Decision analysis
 	# PAGE BREAK
-	case_text += "|[font_size=16][color=#696969]Analysis:[/color][/font_size]\n"
+	case_text += "|[font_size=16][color=#696969]Análise:[/color][/font_size]\n"
 	case_text += get_decision_analysis(decision["presented_verdict_type"], decision["player_choice"], result.was_correct)
 	
 	return case_text
@@ -252,27 +252,27 @@ func get_decision_analysis(verdict_type: String, player_choice: String, was_corr
 	if was_correct:
 		match verdict_type:
 			"correct":
-				analysis = "You correctly identified this as an appropriate verdict. Well done!"
+				analysis = "Você identificou corretamente que este era um veredito apropriado. Muito bem!"
 			"lenient":
-				analysis = "You correctly identified this verdict as too lenient and chose a harsher stance."
+				analysis = "Você identificou corretamente que este veredito foi muito brando e escolheu uma posição mais dura."
 			"harsh":
-				analysis = "You correctly identified this verdict as too harsh and chose a more lenient stance."
+				analysis = "Você identificou corretamente que este veredito foi muito duro e escolheu uma posição mais branda."
 	else:
 		match verdict_type:
 			"correct":
 				if player_choice == "left":
-					analysis = "This was actually an appropriate verdict, but you deemed it too harsh."
+					analysis = "Na verdade, este era um veredito apropriado, mas você o considerou muito duro."
 				else:
-					analysis = "This was actually an appropriate verdict, but you deemed it too lenient."
+					analysis = "Na verdade, este era um veredito apropriado, mas você o considerou muito brando."
 			"lenient":
 				if player_choice == "center":
-					analysis = "This verdict was too lenient, but you considered it appropriate."
+					analysis = "Este veredito foi muito brando, mas você o considerou apropriado."
 				else:
-					analysis = "This verdict was too lenient, but you made it even more lenient."
+					analysis = "Este veredito foi muito brando, mas você o tornou ainda mais brando."
 			"harsh":
 				if player_choice == "center":
-					analysis = "This verdict was too harsh, but you considered it appropriate."
+					analysis = "Este veredito foi muito duro, mas você o considerou apropriado."
 				else:
-					analysis = "This verdict was too harsh, but you made it even harsher."
+					analysis = "Este veredito foi muito duro, mas você o tornou ainda mais duro."
 	
 	return analysis + "\n"
