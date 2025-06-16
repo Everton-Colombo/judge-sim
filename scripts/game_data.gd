@@ -25,6 +25,7 @@ func set_decisions(decisions: Array[Dictionary]) -> void:
 func clear_data() -> void:
 	game_results.clear()
 	current_cases.clear()
+	player_decisions.clear()
 
 func get_summary_stats() -> Dictionary:
 	if game_results.is_empty():

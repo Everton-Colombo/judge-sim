@@ -211,7 +211,8 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	
 	# Explanation if available
 	if not case_data.explanation.is_empty():
-		case_text += "[font_size=18][color=#CD853F]Legal Explanation:[/color][/font_size]\n"
+		# PAGE BREAK
+		case_text += "|[font_size=18][color=#CD853F]Legal Explanation:[/color][/font_size]\n"
 		case_text += "%s\n\n" % case_data.explanation
 	
 	# Decision analysis
