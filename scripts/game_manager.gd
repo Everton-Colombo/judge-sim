@@ -122,7 +122,7 @@ func get_current_case_verdict() -> Dictionary:
 			verdict_text = current_case.lenient_verdict
 		"harsh":
 			verdict_text = current_case.harsh_verdict
-	
+
 	return {
 		"type": selected_type,
 		"text": verdict_text

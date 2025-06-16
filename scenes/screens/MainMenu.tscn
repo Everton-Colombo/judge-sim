@@ -95,6 +95,20 @@ text = "Jogar"
 script = ExtResource("7_upfyg")
 tween_duration = 0.05
 
+[node name="Tutorial" type="Button" parent="ButtonContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_6h67i")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_upfyg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k5e5a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cbd3m")
+text = "Tutorial"
+script = ExtResource("7_upfyg")
+tween_duration = 0.05
+
 [node name="Music" type="Button" parent="ButtonContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -122,3 +136,5 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_cbd3m")
 text = "Sair"
 script = ExtResource("7_upfyg")
 tween_duration = 0.05
+
+[connection signal="pressed" from="ButtonContainer/Tutorial" to="." method="_on_tutorial_pressed"]

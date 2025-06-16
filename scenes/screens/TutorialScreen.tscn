@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://ry7l6i2iebwo"]
+
+[ext_resource type="Script" uid="uid://hw54nouhvvg" path="res://tutorial_screen.gd" id="1_tshws"]
+[ext_resource type="Texture2D" uid="uid://03oknia0la4" path="res://assets/images/background/main-bg.png" id="2_gou50"]
+[ext_resource type="PackedScene" uid="uid://b3vsclu3uvado" path="res://scenes/components/scale.tscn" id="3_2ef4o"]
+[ext_resource type="PackedScene" uid="uid://dg73swyw5b21v" path="res://scenes/components/mallot.tscn" id="4_chfom"]
+[ext_resource type="FontFile" uid="uid://cybi8wko5ffq3" path="res://assets/fonts/Mokgech-Regular.otf" id="5_txis7"]
+[ext_resource type="Texture2D" uid="uid://drsoybj54frtd" path="res://assets/images/background/btn-bg.png" id="6_v1fao"]
+[ext_resource type="Script" uid="uid://b30so3o16x815" path="res://scripts/btn.gd" id="7_taako"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nb6r4"]
+texture = ExtResource("6_v1fao")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pl0te"]
+texture = ExtResource("6_v1fao")
+modulate_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pyh4c"]
+texture = ExtResource("6_v1fao")
+
+[node name="TutorialScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tshws")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.599658, 0.599658)
+texture = ExtResource("2_gou50")
+
+[node name="Scale" parent="." instance=ExtResource("3_2ef4o")]
+position = Vector2(275, 63)
+scale = Vector2(0.596323, 0.596323)
+
+[node name="Mallot" parent="." instance=ExtResource("4_chfom")]
+position = Vector2(272, 336)
+
+[node name="Texto Controles" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 319.0
+offset_right = 1131.0
+offset_bottom = 648.0
+theme_override_fonts/normal_font = ExtResource("5_txis7")
+theme_override_font_sizes/normal_font_size = 18
+text = "CONTROLES:
+Gire a balança física a fim de mudar a posição da balança no jogo, e bata o martelo no suporte para enviar o veredito da balança.
+
+CONTROLES ALTERNATIVOS:
+Use o botão Z do teclado e o mouse para mudar a posição da balança. Quando terminado, aperte Z para parar de mudar a balança, e X para enviar o veredito.
+(Teste ao lado!)"
+
+[node name="Texto Tutorial" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 15.0
+offset_right = 1131.0
+offset_bottom = 319.0
+theme_override_fonts/normal_font = ExtResource("5_txis7")
+theme_override_font_sizes/normal_font_size = 18
+text = "O jogo lhe dará um caso e um veredito. O seu papel como juiz é definir se esse veredito é muito rígido, muito leve, ou está corretamente aplicado.
+
+-Se ele for rígido, coloque a balança para a esquerda a fim de demonstrar que o veredito deve ser mais leve.
+-Se for muito leve, o contrário.
+-Se estiver certo deixe a balança no meio."
+
+[node name="BackBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_left = 138.0
+offset_top = 458.0
+offset_right = 438.0
+offset_bottom = 553.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_txis7")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_nb6r4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pl0te")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pyh4c")
+text = "Voltar"
+script = ExtResource("7_taako")
+tween_duration = 0.05
+
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

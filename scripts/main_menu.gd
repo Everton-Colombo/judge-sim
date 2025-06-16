@@ -21,3 +21,7 @@ func _on_music_pressed() -> void:
 		Music.stop()
 	else:
 		Music.play()
+
+
+func _on_tutorial_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/screens/TutorialScreen.tscn")

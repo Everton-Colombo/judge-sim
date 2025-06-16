@@ -202,11 +202,30 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	case_text += "%s\n\n" % decision["presented_verdict_text"]
 	
 	case_text += "[font_size=18][color=#4682B4]Sua decisão:[/color][/font_size]\n"
-	case_text += "Posição da balança: [font_size=16]%s[/font_size]\n" % decision["player_choice"].to_upper()
-	case_text += "Tipo do veredito: [font_size=16]%s[/font_size]\n\n" % decision["presented_verdict_type"].to_upper()
+	# Traduz a escolha do jogador
+	var escolha: String
+	match decision["player_choice"]:
+		"left":
+			escolha = "ESQUERDA"
+		"right":
+			escolha = "DIREITA"
+		"center":
+			escolha = "CENTRO"
+	case_text += "Posição da balança: [font_size=16]%s[/font_size]\n" % escolha
+	
+	# Traduz o tipo do veredito
+	var veredito_apresentado: String
+	match decision["presented_verdict_type"]:
+		"lenient":
+			veredito_apresentado = "LENIENTE"
+		"correct":
+			veredito_apresentado = "CORRETO"
+		"harsh":
+			veredito_apresentado = "RÍGIDO"
+	case_text += "Tipo do veredito: [font_size=16]%s[/font_size]\n\n" % veredito_apresentado
 	
 	# Correct information
-	case_text += "[font_size=18][color=#2D5016]Veredito Correto:[/color][/font_size]\n"
+	case_text += "|[font_size=18][color=#2D5016]Veredito Correto:[/color][/font_size]\n"
 	case_text += "%s\n\n" % case_data.correct_verdict
 	
 	# Explanation if available
@@ -234,17 +253,17 @@ func get_accuracy_color(accuracy: float) -> String:
 
 func get_performance_assessment(accuracy: float) -> String:
 	if accuracy >= 90.0:
-		return "Outstanding judicial wisdom! You have the makings of a Supreme Court Justice."
+		return "Notável sabedoria jurídica! Você tem o que é preciso para ser um Ministro do Supremo Tribunal."
 	elif accuracy >= 80.0:
-		return "Excellent judgment! Your decisions show strong legal reasoning."
+		return "Excelente julgamento! Suas decisões demonstram um forte raciocínio jurídico."
 	elif accuracy >= 70.0:
-		return "Good performance. You demonstrate solid understanding of justice."
+		return "Bom desempenho. Você demonstra uma sólida compreensão da justiça."
 	elif accuracy >= 60.0:
-		return "Fair judgment. Consider reviewing legal principles for improvement."
+		return "Julgamento razoável. Considere revisar os princípios jurídicos para melhorar."
 	elif accuracy >= 50.0:
-		return "Below average. More study of legal precedents is recommended."
+		return "Desempenho abaixo da média. Recomenda-se um estudo mais aprofundado da jurisprudência."
 	else:
-		return "Concerning performance. Extensive legal training is strongly advised."
+		return "Desempenho preocupante. Aconselha-se fortemente um treinamento jurídico aprofundado."
 
 func get_decision_analysis(verdict_type: String, player_choice: String, was_correct: bool) -> String:
 	var analysis = ""
