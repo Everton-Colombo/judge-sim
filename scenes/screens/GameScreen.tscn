@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cevqkl7gjsp3u"]
+[gd_scene load_steps=12 format=3 uid="uid://cevqkl7gjsp3u"]
 
 [ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_a0wgl"]
 [ext_resource type="Script" uid="uid://qcot020d8bfu" path="res://scripts/game_manager.gd" id="1_d2sms"]
@@ -6,7 +6,37 @@
 [ext_resource type="PackedScene" uid="uid://dg73swyw5b21v" path="res://scenes/components/mallot.tscn" id="2_d2sms"]
 [ext_resource type="PackedScene" uid="uid://b3vsclu3uvado" path="res://scenes/components/scale.tscn" id="3_alg88"]
 [ext_resource type="Texture2D" uid="uid://bvjs5qi00etcq" path="res://assets/images/objects/judge.png" id="4_gljsl"]
+[ext_resource type="Texture2D" uid="uid://bm66fis4ym031" path="res://assets/images/objects/judge-blink.png" id="5_hofs8"]
 [ext_resource type="Texture2D" uid="uid://c05p648kmjatt" path="res://assets/images/objects/table.png" id="5_o0kps"]
+[ext_resource type="Texture2D" uid="uid://d6ffi5q88ks0" path="res://assets/images/objects/judge-side.png" id="6_ehb84"]
+[ext_resource type="Script" uid="uid://dt2iw23a46qu6" path="res://scripts/judge.gd" id="7_2xe0f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unmne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hofs8")
+}],
+"loop": false,
+"name": &"blink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gljsl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("6_ehb84")
+}],
+"loop": false,
+"name": &"look",
+"speed": 5.0
+}]
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_d2sms")
@@ -30,7 +60,15 @@ expand_mode = 3
 
 [node name="ContentLayer" type="Node2D" parent="."]
 
+[node name="Judge2" type="AnimatedSprite2D" parent="ContentLayer"]
+position = Vector2(323, 282)
+scale = Vector2(0.534398, 0.534398)
+sprite_frames = SubResource("SpriteFrames_unmne")
+animation = &"look"
+script = ExtResource("7_2xe0f")
+
 [node name="Judge" type="Sprite2D" parent="ContentLayer"]
+visible = false
 position = Vector2(322, 285)
 scale = Vector2(0.533231, 0.533231)
 texture = ExtResource("4_gljsl")

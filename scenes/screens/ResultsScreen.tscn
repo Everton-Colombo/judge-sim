@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg7fmr7515eha"]
+[gd_scene load_steps=12 format=3 uid="uid://dg7fmr7515eha"]
 
 [ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_m8ero"]
 [ext_resource type="Script" uid="uid://dymt3t5welgy6" path="res://scripts/results_screen.gd" id="2_gnsfi"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cybi8wko5ffq3" path="res://assets/fonts/Mokgech-Regular.otf" id="4_w1771"]
 [ext_resource type="Texture2D" uid="uid://drsoybj54frtd" path="res://assets/images/background/btn-bg.png" id="5_v82pq"]
 [ext_resource type="Script" uid="uid://b30so3o16x815" path="res://scripts/btn.gd" id="6_1mmkg"]
+[ext_resource type="AudioStream" uid="uid://dd3wnp4a5u4co" path="res://assets/sounds/Win sound.wav" id="8_v82pq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q4m3p"]
 texture = ExtResource("5_v82pq")
@@ -64,5 +65,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_17220")
 text = "Voltar"
 script = ExtResource("6_1mmkg")
 tween_duration = 0.05
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_v82pq")
+autoplay = true
 
 [connection signal="pressed" from="UILayer/BackBtn" to="." method="_on_main_menu_button_pressed"]
