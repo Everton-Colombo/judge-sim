@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Case" load_steps=2 format=3 uid="uid://clbtlq3h2wiyx"]
+
+[ext_resource type="Script" uid="uid://d336s5hqhhnmc" path="res://scripts/case.gd" id="1_3ll6g"]
+
+[resource]
+script = ExtResource("1_3ll6g")
+title = "Mercado (caso fictício)"
+description = "No mercadinho da esquina, o cliente Fulano deliberadamente pegou uma caixa de leite de R$ 8,00 e uma dúzia de ovos de R$ 6,00, colocou no carrinho, saiu sem efetuar o pagamento e atravessou a rua até sua casa. As câmeras do mercado flagraram sua ação. Ao ser abordado, admitiu: “Nunca tinha feito isso antes, peguei porque o preço estava alto, mas vou pagar depois”. O que deve acontecer com Fulano?|"
+correct_verdict = "Fulano é condenado por furto privilegiado de leite e ovos, com pena reduzida da base para multa e prestação de serviços comunitários."
+lenient_verdict = "Fulano é absolvido de todos os processos, exceto a indenização de R$ 14,00 ao mercado, em razão do preço do que foi furtado ser irrisório."
+harsh_verdict = "Fulano é condenado por furto, com pena 3 anos de reclusão em regime semiaberto mais multa, sem direito a substituição ou redução de pena."
+explanation = "Esse caso é fictício, mas é possível analisar a legislação e deduzir um provável veredito a Fulano. Por ter sido um ato deliberado (com intenção), Fulano praticou furto. No Art. 155 do Código Penal, que diz respeito a furtos, a legislação impõe pena de reclusão, de um a quatro anos, e multa, a infratores. Mas parágrafo 2º desse artigo, que dispõe de furtos privilegiados, afirma que se “o criminoso é primário, e é de pequeno valor a coisa furtada, o juiz pode substituir a pena de reclusão pela de detenção, diminuí-la de um a dois terços, ou aplicar somente a pena de multa,” o que cabe nesse caso, |visto que o agente é réu primário (é o primeiro processo criminal de Fulano) e o valor do furto foi de apenas R$ 14,00. Então, é possível que Fulano tenha sua pena reduzida para apenas multa mais alguma prestação de serviço comunitário, mas muito provavelmente Fulano não seria absolvido desse processo."
+metadata/_custom_type_script = "uid://d336s5hqhhnmc"
