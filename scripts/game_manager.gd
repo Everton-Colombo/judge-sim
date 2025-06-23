@@ -7,7 +7,7 @@ signal all_cases_completed()
 
 @export var cases_folder_path: String = "res://assets/cases/"
 
-var cases: Array[Case] = []
+@export var cases: Array[Case] = []
 var current_case_index: int = 0
 var total_cases: int = 5
 
@@ -24,7 +24,7 @@ func _ready():
 	
 	GameData.clear_data()
 	
-	load_all_cases()
+	#load_all_cases()
 	display_current_case()
 
 # Displays the current case
@@ -68,6 +68,7 @@ func on_mallot_struck():
 
 ## Loads all Case resource files from the specified folder
 func load_all_cases() -> void:
+	print("Loading cases...")
 	cases.clear()
 	
 	var dir = DirAccess.open(cases_folder_path)

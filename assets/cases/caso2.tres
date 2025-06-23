@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_v254b")
-title = "Sorvetes derretidos"
+title = "Sorvetes derretidos(caso fictício)"
 description = "Certo dia, o fornecimento de energia elétrica foi interrompido no bairro “Boa Vista”, sem nenhum aviso prévio. A interrupção durou 48 horas, apesar de moradores e comerciantes ligarem insistentemente para a concessionária de energia local, que é uma empresa privada. Seu Fulano tem uma distribuidora de sorvetes no bairro e perdeu toda a sua mercadoria, o que representou um prejuízo de R$ 90.000,00.|"
 correct_verdict = "A concessionária é condenada a indenizar Seu Fulano em R$ 90.000,00 por danos materiais, corrigidos monetariamente e acrescidos de juros, em razão da conduta negligente, comprovação do prejuízo, e responsabilidade civil objetiva — isto é, não importa culpa, apenas se houve dano, conexão causal entre o serviço e o dano e a falha no serviço."
 lenient_verdict = "As ações contra a concessionária são julgadas improcedentes e ela não terá que pagar nada, uma vez que quedas de energia são normais e imprevisíveis. A Justiça entendeu que Seu Fulano foi negligente por não possuir uma forma alternativa de armazenamento para seus produtos. Assim, ele não receberá qualquer indenização da concessionária de energia."

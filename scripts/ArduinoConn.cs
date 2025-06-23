@@ -58,7 +58,8 @@ public partial class ArduinoConn : Node
 			}
 			
 			serialPort = new SerialPort();
-			serialPort.PortName = "/dev/ttyACM0"; // Change to your Arduino port
+			//serialPort.PortName = "/dev/ttyACM0"; // Change to your Arduino port
+			serialPort.PortName = "COM3";
 			serialPort.BaudRate = 9600;
 			serialPort.ReadTimeout = 500; // 500ms timeout
 			serialPort.WriteTimeout = 500;

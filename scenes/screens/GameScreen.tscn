@@ -1,15 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://cevqkl7gjsp3u"]
+[gd_scene load_steps=18 format=3 uid="uid://cevqkl7gjsp3u"]
 
 [ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_a0wgl"]
 [ext_resource type="Script" uid="uid://qcot020d8bfu" path="res://scripts/game_manager.gd" id="1_d2sms"]
 [ext_resource type="Texture2D" uid="uid://daatrgvdd5qir" path="res://assets/images/background/maingame-bg.png" id="2_0wecs"]
 [ext_resource type="PackedScene" uid="uid://dg73swyw5b21v" path="res://scenes/components/mallot.tscn" id="2_d2sms"]
+[ext_resource type="Script" uid="uid://d336s5hqhhnmc" path="res://scripts/case.gd" id="2_rr841"]
 [ext_resource type="PackedScene" uid="uid://b3vsclu3uvado" path="res://scenes/components/scale.tscn" id="3_alg88"]
+[ext_resource type="Resource" uid="uid://divrdcocceyc3" path="res://assets/cases/caso1.tres" id="3_qek3e"]
 [ext_resource type="Texture2D" uid="uid://bvjs5qi00etcq" path="res://assets/images/objects/judge.png" id="4_gljsl"]
+[ext_resource type="Resource" uid="uid://cu32mn71ifpv0" path="res://assets/cases/caso2.tres" id="4_phgf3"]
 [ext_resource type="Texture2D" uid="uid://bm66fis4ym031" path="res://assets/images/objects/judge-blink.png" id="5_hofs8"]
 [ext_resource type="Texture2D" uid="uid://c05p648kmjatt" path="res://assets/images/objects/table.png" id="5_o0kps"]
+[ext_resource type="Resource" uid="uid://dp3byj5p2t5x" path="res://assets/cases/caso3.tres" id="5_upus0"]
 [ext_resource type="Texture2D" uid="uid://d6ffi5q88ks0" path="res://assets/images/objects/judge-side.png" id="6_ehb84"]
+[ext_resource type="Resource" uid="uid://cu1l0fxgsa7sf" path="res://assets/cases/caso4.tres" id="6_tbbc2"]
 [ext_resource type="Script" uid="uid://dt2iw23a46qu6" path="res://scripts/judge.gd" id="7_2xe0f"]
+[ext_resource type="Resource" uid="uid://clbtlq3h2wiyx" path="res://assets/cases/caso5.tres" id="7_tnggc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_unmne"]
 animations = [{
@@ -40,6 +46,7 @@ animations = [{
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_d2sms")
+cases = Array[ExtResource("2_rr841")]([ExtResource("3_qek3e"), ExtResource("4_phgf3"), ExtResource("5_upus0"), ExtResource("6_tbbc2"), ExtResource("7_tnggc")])
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
