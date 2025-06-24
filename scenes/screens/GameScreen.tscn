@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cevqkl7gjsp3u"]
+[gd_scene load_steps=20 format=3 uid="uid://cevqkl7gjsp3u"]
 
 [ext_resource type="PackedScene" uid="uid://b1nbsij0oy4sj" path="res://scenes/components/ui.tscn" id="1_a0wgl"]
 [ext_resource type="Script" uid="uid://qcot020d8bfu" path="res://scripts/game_manager.gd" id="1_d2sms"]
@@ -16,6 +16,8 @@
 [ext_resource type="Resource" uid="uid://cu1l0fxgsa7sf" path="res://assets/cases/caso4.tres" id="6_tbbc2"]
 [ext_resource type="Script" uid="uid://dt2iw23a46qu6" path="res://scripts/judge.gd" id="7_2xe0f"]
 [ext_resource type="Resource" uid="uid://clbtlq3h2wiyx" path="res://assets/cases/caso5.tres" id="7_tnggc"]
+[ext_resource type="FontFile" uid="uid://fxkj3dj46x7o" path="res://assets/fonts/XTypewriter-Bold.ttf" id="10_phgf3"]
+[ext_resource type="Script" uid="uid://4pdyeigu4hmt" path="res://scripts/verdict_type.gd" id="11_upus0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_unmne"]
 animations = [{
@@ -62,6 +64,17 @@ texture = ExtResource("2_0wecs")
 expand_mode = 3
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Verdict Type" type="RichTextLabel" parent="UILayer"]
+offset_left = 46.0
+offset_top = 49.0
+offset_right = 378.0
+offset_bottom = 109.0
+scale = Vector2(0.900823, 0.900823)
+theme_override_fonts/normal_font = ExtResource("10_phgf3")
+theme_override_font_sizes/normal_font_size = 40
+text = "test"
+script = ExtResource("11_upus0")
 
 [node name="UI" parent="UILayer" instance=ExtResource("1_a0wgl")]
 

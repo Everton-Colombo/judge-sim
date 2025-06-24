@@ -97,7 +97,7 @@ func format_case_to_rich_text(case_data: Case, proposed_verdict: Dictionary = {}
 	
 	# Format description section
 	formatted_text += "[font_size=24]Descrição[/font_size]\n"
-	formatted_text += case_data.description + "\n\n"
+	formatted_text += case_data.description
 	
 	# Format verdict section
 	formatted_text += "[font_size=24]Veredito Proposto[/font_size]\n"
@@ -198,10 +198,10 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 	
 	# Presented verdict and player decision
 	#PAGE BREAK
-	case_text += "|[font_size=18][color=#B8860B]Veredito Apresentado:[/color][/font_size]\n"
+	case_text += "|[font_size=20][color=#B8860B]Veredito Apresentado:[/color][/font_size]\n"
 	case_text += "%s\n\n" % decision["presented_verdict_text"]
 	
-	case_text += "[font_size=18][color=#4682B4]Sua decisão:[/color][/font_size]\n"
+	case_text += "|[font_size=20][color=#4682B4]Sua decisão:[/color][/font_size]\n"
 	# Traduz a escolha do jogador
 	var escolha: String
 	match decision["player_choice"]:
@@ -211,7 +211,7 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 			escolha = "DIREITA"
 		"center":
 			escolha = "CENTRO"
-	case_text += "Posição da balança: [font_size=16]%s[/font_size]\n" % escolha
+	case_text += "Posição da balança: [font_size=20]%s[/font_size]\n" % escolha
 	
 	# Traduz o tipo do veredito
 	var veredito_apresentado: String
@@ -222,21 +222,21 @@ func format_individual_case_result(result: Dictionary, case_number: int) -> Stri
 			veredito_apresentado = "CORRETO"
 		"harsh":
 			veredito_apresentado = "RÍGIDO"
-	case_text += "Tipo do veredito: [font_size=16]%s[/font_size]\n\n" % veredito_apresentado
+	case_text += "Tipo do veredito: [font_size=20]%s[/font_size]\n\n" % veredito_apresentado
 	
 	# Correct information
-	case_text += "|[font_size=18][color=#2D5016]Veredito Correto:[/color][/font_size]\n"
+	case_text += "|[font_size=20][color=#2D5016]Veredito Correto:[/color][/font_size]\n"
 	case_text += "%s\n\n" % case_data.correct_verdict
 	
 	# Explanation if available
 	if not case_data.explanation.is_empty():
 		# PAGE BREAK
-		case_text += "|[font_size=18][color=#CD853F]Explicação Legal:[/color][/font_size]\n"
+		case_text += "|[font_size=20][color=#CD853F]Explicação Legal:[/color][/font_size]\n"
 		case_text += "%s\n\n" % case_data.explanation
 	
 	# Decision analysis
 	# PAGE BREAK
-	case_text += "|[font_size=16][color=#696969]Análise:[/color][/font_size]\n"
+	case_text += "|[font_size=20][color=#696969]Análise:[/color][/font_size]\n"
 	case_text += get_decision_analysis(decision["presented_verdict_type"], decision["player_choice"], result.was_correct)
 	
 	return case_text

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ry7l6i2iebwo"]
+[gd_scene load_steps=12 format=3 uid="uid://ry7l6i2iebwo"]
 
-[ext_resource type="Script" uid="uid://hw54nouhvvg" path="res://tutorial_screen.gd" id="1_tshws"]
+[ext_resource type="Script" uid="uid://hw54nouhvvg" path="res://scripts/tutorial_screen.gd" id="1_tshws"]
 [ext_resource type="Texture2D" uid="uid://03oknia0la4" path="res://assets/images/background/main-bg.png" id="2_gou50"]
 [ext_resource type="PackedScene" uid="uid://b3vsclu3uvado" path="res://scenes/components/scale.tscn" id="3_2ef4o"]
 [ext_resource type="PackedScene" uid="uid://dg73swyw5b21v" path="res://scenes/components/mallot.tscn" id="4_chfom"]
+[ext_resource type="FontFile" uid="uid://fxkj3dj46x7o" path="res://assets/fonts/XTypewriter-Bold.ttf" id="5_gou50"]
 [ext_resource type="FontFile" uid="uid://cybi8wko5ffq3" path="res://assets/fonts/Mokgech-Regular.otf" id="5_txis7"]
 [ext_resource type="Texture2D" uid="uid://drsoybj54frtd" path="res://assets/images/background/btn-bg.png" id="6_v1fao"]
 [ext_resource type="Script" uid="uid://b30so3o16x815" path="res://scripts/btn.gd" id="7_taako"]
@@ -47,8 +48,8 @@ offset_left = 576.0
 offset_top = 319.0
 offset_right = 1131.0
 offset_bottom = 648.0
-theme_override_fonts/normal_font = ExtResource("5_txis7")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_fonts/normal_font = ExtResource("5_gou50")
+theme_override_font_sizes/normal_font_size = 20
 text = "CONTROLES:
 Gire a balança física a fim de mudar a posição da balança no jogo, e bata o martelo no suporte para enviar o veredito da balança.
 
@@ -62,8 +63,8 @@ offset_left = 576.0
 offset_top = 15.0
 offset_right = 1131.0
 offset_bottom = 319.0
-theme_override_fonts/normal_font = ExtResource("5_txis7")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_fonts/normal_font = ExtResource("5_gou50")
+theme_override_font_sizes/normal_font_size = 20
 text = "O jogo lhe dará um caso e um veredito. O seu papel como juiz é definir se esse veredito é muito rígido, muito leve, ou está corretamente aplicado.
 
 -Se ele for rígido, coloque a balança para a esquerda a fim de demonstrar que o veredito deve ser mais leve.

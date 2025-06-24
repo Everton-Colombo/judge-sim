@@ -60,10 +60,15 @@ func _process(_delta: float) -> void:
 
 	if mouse_scale_mode:
 		var mouse_x = get_viewport().get_mouse_position().x
-		var viewport_center_x = get_viewport().size.x / 2
-		angle = (mouse_x - viewport_center_x) / 4.0
+		var viewport_size_x = get_viewport().size.x
+		var viewport_center_x = viewport_size_x / 2
 		
-	rotate_arms(angle)
+		var relative_mouse_x = (mouse_x - viewport_center_x) / (viewport_size_x / 2)
+		var max_angle = 45.0  # Adjust as needed
+		angle = relative_mouse_x * max_angle
+		
+		print("MOUSE X: %d\nVIEWPORT: %d\nANGLE: %.2f" % [mouse_x, viewport_center_x, angle])
+		rotate_arms(angle)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:

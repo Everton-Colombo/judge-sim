@@ -21,6 +21,10 @@ ArduinoConn="*res://scripts/ArduinoConn.cs"
 Music="*res://scenes/music.tscn"
 GameData="*res://scripts/game_data.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="ui_tut"
